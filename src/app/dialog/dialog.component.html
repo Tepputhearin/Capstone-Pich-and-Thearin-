@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Add Pill Form</h1>
+<div mat-dialog-content>
+    <form [formGroup]="pillForm">
+      <mat-form-field appearance="outline">
+        <mat-label>Pill's Code</mat-label>
+        <input formControlName="pillCode" matInput placeholder="Pill's Code">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Pill's Name</mat-label>
+        <input formControlName="pillName" matInput placeholder="Pill's Name">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input formControlName="pillQuan" matInput #input maxlength="5" placeholder="Quantity">
+        <mat-hint align="end">{{input.value.length}}/5</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="always">
+        <mat-label>Price</mat-label>
+        <input formControlName="pillPrice" matInput type="number" class="example-right-align" placeholder="0">
+        <span matTextPrefix>$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a Purchase Date</mat-label>
+        <input formControlName="pillPur" matInput [matDatepicker]="picker1">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a Expiration Date</mat-label>
+        <input formControlName="pillEx" matInput [matDatepicker]="picker2">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+
+    </form>
+
+      <div mat-dialog-action [align]="'end'">
+
+        <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+        <button style="margin-left: 8px;"mat-raised-button color="primary" (click)="addPill()">{{actionBtn}}</button>
+
+      </div>
+      
+      
+</div>

@@ -1,0 +1,77 @@
+ <mat-toolbar style="background-color: black;color:white">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>supervisor_account</mat-icon>
+    </button>
+    <span>Pharmacy</span>
+    <span class="example-spacer"></span>
+    <button mat-raised-button color="primary" (click)="openDialog()">Add</button>
+  </mat-toolbar>
+
+  <div class="container">
+    <div style="margin-top:20px">
+      <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Para" #input>
+      </mat-form-field>
+      
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+      
+          <!-- ID Column -->
+          <ng-container matColumnDef="pillCode">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Pill Code </th>
+            <td mat-cell *matCellDef="let row"> {{row.pillCode}} </td>
+          </ng-container>
+      
+          <!-- Progress Column -->
+          <ng-container matColumnDef="pillName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let row"> {{row.pillName}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="pillQuan">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+            <td mat-cell *matCellDef="let row"> {{row.pillQuan}} </td>
+          </ng-container>
+      
+          <!-- Fruit Column -->
+          <ng-container matColumnDef="pillPrice">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Price </th>
+            <td mat-cell *matCellDef="let row"> {{row.pillPrice | currency}} </td>
+          </ng-container>
+          <ng-container matColumnDef="pillPur">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Purchase Date </th>
+            <td mat-cell *matCellDef="let row"> {{row.pillPur | date}} </td>
+          </ng-container>
+          <ng-container matColumnDef="pillEx">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Expiration </th>
+            <td mat-cell *matCellDef="let row"> {{row.pillEx | date}} </td>
+          </ng-container>
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="editPill(row)" color="primary">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button (click)="deletePill(row.id)" mat-icon-button color="warn">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+      </div>
+      
+      
+    </div>
+  </div>

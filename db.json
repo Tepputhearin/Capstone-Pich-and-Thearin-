@@ -1,0 +1,32 @@
+{
+  "pillList": [
+    {
+      "pillCode": "1",
+      "pillName": "Pana",
+      "pillQuan": "21",
+      "pillPrice": 23,
+      "pillPur": "2023-02-06T17:00:00.000Z",
+      "pillEx": "2023-02-16T17:00:00.000Z",
+      "id": 1
+    },
+    {
+      "pillCode": "2",
+      "pillName": "Paro",
+      "pillQuan": "23",
+      "pillPrice": 21,
+      "pillPur": "2023-02-21T17:00:00.000Z",
+      "pillEx": "2023-02-24T17:00:00.000Z",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
